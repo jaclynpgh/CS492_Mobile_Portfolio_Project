@@ -112,7 +112,7 @@ class _NewWastePostState extends State<NewWastePost> {
             'latitude': post.longitude,
             'longitude': post.latitude,
             'quantity': post.quantity,
-            'imageURL': post.imageURL,
+            'imageURL': fireURL,
           });
           Navigator.of(context).pop();
         }

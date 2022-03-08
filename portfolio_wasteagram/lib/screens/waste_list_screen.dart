@@ -43,8 +43,9 @@ class _WasteListScreen extends State<WasteListScreen> {
               //               longitude: post['longitude'],
               // );
                         return ListTile(               
-                            title: Text(post['date'].toString()),
-                            trailing: Text(post['quantity'].toString()),
+                            title: Text(post['date'].toString(), style: Theme.of(context).textTheme.headline6,),
+                            trailing: Text(post['quantity'].toString(), style: Theme.of(context).textTheme.headline5,),
+                            
                     //           onTap: () { Navigator.of(context).push(
                     //     MaterialPageRoute(builder: (context) => WasteDetailScreen(
                     //       post: postDetails
@@ -59,6 +60,7 @@ class _WasteListScreen extends State<WasteListScreen> {
                 ],);
             } else {
               return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
                   Center(child: CircularProgressIndicator()),
                   

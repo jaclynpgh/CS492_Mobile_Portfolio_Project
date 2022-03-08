@@ -27,7 +27,6 @@ class WasteForm extends StatelessWidget {
         padding: const EdgeInsets.only(left: 14.0, right: 14.0),
         child: TextFormField(
           textAlign: TextAlign.center,
-          autofocus: true,
           keyboardType: TextInputType.number,
           inputFormatters: <TextInputFormatter>[
             FilteringTextInputFormatter.digitsOnly,
