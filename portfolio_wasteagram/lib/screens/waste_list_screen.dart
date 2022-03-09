@@ -6,11 +6,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:portfolio_wasteagram/screens/new_waste_post.dart';
 
+import '../models/food_waste_post.dart';
+import 'waste_detail_screen.dart';
+
 
 class WasteListScreen extends StatefulWidget {
   @override
   _WasteListScreen createState() => _WasteListScreen();
 }
+
+final format = DateFormat('EEEE, MMMM d');
 
 class _WasteListScreen extends State<WasteListScreen> {
 
@@ -35,24 +40,24 @@ class _WasteListScreen extends State<WasteListScreen> {
                       itemCount: snapshot.data!.docs.length,
                       itemBuilder: (context, index) {
                         var post = snapshot.data!.docs[index];
-              //           var postDetails = FoodWastePost(
-              //               date: post['date'].toString(),
-              //               imageURL: post['url'],
-              //               quantity: post['quantity'],
-              //               latitude: post['latitude'],
-              //               longitude: post['longitude'],
-              // );
-                        return ListTile(               
+                       
+                        var postDetails = FoodWastePost(   
+                            date: post['date'],
+                            imageURL: post['imageURL'],
+                            quantity: post['quantity'],
+                            latitude: post['latitude'],
+                            longitude: post['longitude'],
+              );   
+                      
+                        return ListTile(  
                             title: Text(post['date'].toString(), style: Theme.of(context).textTheme.headline6,),
                             trailing: Text(post['quantity'].toString(), style: Theme.of(context).textTheme.headline5,),
-                            
-                    //           onTap: () { Navigator.of(context).push(
-                    //     MaterialPageRoute(builder: (context) => WasteDetailScreen(
-                    //       post: postDetails
-                    //     ))
-                    //   );
-                    // },
-                            
+                              onTap: () { Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => WasteDetailScreen(
+                          post: postDetails
+                        ))
+                      );
+                    },       
                             );},
                     ),
                   ),

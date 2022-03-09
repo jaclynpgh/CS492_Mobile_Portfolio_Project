@@ -24,7 +24,7 @@ class _NewWastePostState extends State<NewWastePost> {
   final picker = ImagePicker();
   var formKey = GlobalKey<FormState>();
   final post = FoodWastePost();
-  final format = DateFormat('EEEE, MMMM d');
+  final format = DateFormat('EEEE, MMMM d, y');
 
 
     Future getImage() async {

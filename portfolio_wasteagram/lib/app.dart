@@ -16,8 +16,6 @@ class App extends StatelessWidget {
       title: 'Project 5',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-
-        
       ),
       home:  WasteListScreen(),
     );
