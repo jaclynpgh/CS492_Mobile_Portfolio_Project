@@ -7,16 +7,9 @@ class FoodWastePost {
 
   FoodWastePost({ this.date,  this.imageURL,  this.quantity,  this.latitude,  this.longitude});
 
-  Map<String, dynamic> toMap() => {
-    'date': this.date,
-    'imageURL': this.imageURL,
-    'quantity': this.quantity,
-    'latitude': this.latitude,
-    'longitude': this.longitude,
-    
-  };
 
-  factory FoodWastePost.fromMap(Map<String, dynamic>map ) {   //check to see if you have to parse date, int, and doubles
+
+  factory FoodWastePost.fromMap(Map<String, dynamic>map ) {   
     return FoodWastePost(
         date: map['date'],
         imageURL: map['imageURL'],

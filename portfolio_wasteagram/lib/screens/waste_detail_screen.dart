@@ -30,8 +30,7 @@ class WasteDetailScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(child: SizedBox(height: 20,)),
-          ],
-        ),
+          ]),
         Image.network(post.imageURL.toString()),
         Padding(
           padding: const EdgeInsets.all(40.0),
