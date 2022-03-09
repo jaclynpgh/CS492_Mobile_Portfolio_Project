@@ -49,16 +49,21 @@ class _WasteListScreen extends State<WasteListScreen> {
                             longitude: post['longitude'],
               );   
                       
-                        return ListTile(  
-                            title: Text(post['date'].toString(), style: Theme.of(context).textTheme.headline6,),
-                            trailing: Text(post['quantity'].toString(), style: Theme.of(context).textTheme.headline5,),
-                              onTap: () { Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => WasteDetailScreen(
-                          post: postDetails
-                        ))
-                      );
-                    },       
-                            );},
+                        return Semantics(
+                          onTapHint: 'View details on Waste Post',
+                          label: 'Waste Post Details',
+                          enabled: true,
+                          child: ListTile(  
+                              title: Text(post['date'].toString(), style: Theme.of(context).textTheme.headline6,),
+                              trailing: Text(post['quantity'].toString(), style: Theme.of(context).textTheme.headline5,),
+                                onTap: () { Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => WasteDetailScreen(
+                            post: postDetails
+                          ))
+                                              );
+                                            },       
+                              ),
+                        );},
                     ),
                   ),
                  
@@ -83,11 +88,11 @@ class _WasteListScreen extends State<WasteListScreen> {
           onPressed: () async {
          Navigator.push(
              context, MaterialPageRoute(builder: (context) => const NewWastePost()));
-
       },
           child: const Icon(Icons.camera_alt_outlined),
       ),
       onTapHint: 'Select an image',
+      label: 'Camera button',
       enabled: true,
       button: true
     );

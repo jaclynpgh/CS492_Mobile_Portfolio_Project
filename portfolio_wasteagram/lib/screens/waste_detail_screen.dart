@@ -12,35 +12,39 @@ class WasteDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Wasteagram'),
-          leading: const BackButton(),),
+          leading: Semantics
+          (onTapHint: 'Go Back',
+            child: const BackButton()),),
       body: layout(context),
 
     );
   }
 
   Widget layout(context){
- 
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(top:40.0, bottom: 40.0),
-          child: Text(post.date.toString(), style: Theme.of(context).textTheme.headline5,),
-        ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(child: SizedBox(height: 20,)),
-          ]),
-        Image.network(post.imageURL.toString()),
-        Padding(
-          padding: const EdgeInsets.all(40.0),
-          child: Text('${post.quantity.toString()} items',style: Theme.of(context).textTheme.headline4),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top:20.0),
-          child: Text('Location: ${post.longitude.toString()}, ${post.latitude.toString()}', style: Theme.of(context).textTheme.subtitle1),
-        )
-      ]);
+    return Semantics(
+      label: 'Date, image, quantity, and location of waste post' ,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top:40.0, bottom: 40.0),
+            child: Text(post.date.toString(), style: Theme.of(context).textTheme.headline5,),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Center(child: SizedBox(height: 20,)),
+            ]),
+          Image.network(post.imageURL.toString()),
+          Padding(
+            padding: const EdgeInsets.all(40.0),
+            child: Text('${post.quantity.toString()} items',style: Theme.of(context).textTheme.headline4),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top:20.0),
+            child: Text('Location: ${post.longitude.toString()}, ${post.latitude.toString()}', style: Theme.of(context).textTheme.subtitle1),
+          )
+        ]),
+    );
   }
 }
 

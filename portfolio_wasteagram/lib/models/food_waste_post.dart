@@ -8,7 +8,6 @@ class FoodWastePost {
   FoodWastePost({ this.date,  this.imageURL,  this.quantity,  this.latitude,  this.longitude});
 
 
-
   factory FoodWastePost.fromMap(Map<String, dynamic>map ) {   
     return FoodWastePost(
         date: map['date'],

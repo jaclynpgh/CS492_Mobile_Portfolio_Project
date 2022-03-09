@@ -98,25 +98,29 @@ class _NewWastePostState extends State<NewWastePost> {
 
 
   Widget validateSaveUploadAndPop(BuildContext context) {
-    return GestureDetector(
-      child: Container(
-          height: 100,
-          color: Colors.blue,
-          child: const Icon(Icons.cloud_upload_outlined, color: Colors.white, size: 50)),
-      onTap: () async {
-        post.date = format.format(DateTime.now());
-        if (formKey.currentState!.validate()) {
-          formKey.currentState!.save();
-          FirebaseFirestore.instance.collection('posts').add({
-            'date': post.date,
-            'latitude': post.longitude,
-            'longitude': post.latitude,
-            'quantity': post.quantity,
-            'imageURL': fireURL,
-          });
-          Navigator.of(context).pop();
-        }
-      },
+    return Semantics(
+      onTapHint: 'Uploads new post',
+      label:'Upload post to cloud',
+      child: GestureDetector(
+        child: Container(
+            height: 100,
+            color: Colors.blue,
+            child: const Icon(Icons.cloud_upload_outlined, color: Colors.white, size: 50)),
+        onTap: () async {
+          post.date = format.format(DateTime.now());
+          if (formKey.currentState!.validate()) {
+            formKey.currentState!.save();
+            FirebaseFirestore.instance.collection('posts').add({
+              'date': post.date,
+              'latitude': post.longitude,
+              'longitude': post.latitude,
+              'quantity': post.quantity,
+              'imageURL': fireURL,
+            });
+            Navigator.of(context).pop();
+          }
+        },
+      ),
     );
   }
 }

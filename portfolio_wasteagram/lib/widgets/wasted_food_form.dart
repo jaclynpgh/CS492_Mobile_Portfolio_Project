@@ -25,29 +25,33 @@ class WasteForm extends StatelessWidget {
       key: formKey,
       child: Padding(
         padding: const EdgeInsets.only(left: 14.0, right: 14.0),
-        child: TextFormField(
-          textAlign: TextAlign.center,
-          keyboardType: TextInputType.number,
-          inputFormatters: <TextInputFormatter>[
-            FilteringTextInputFormatter.digitsOnly,
-          ],
-          style: Theme.of(context).textTheme.headline5,
-          decoration: const InputDecoration(
-         hintText: 'Number of Wasted Items',
+        child: Semantics(
+          onTapHint: 'Enter the waste quantity',
+          label: 'Form field for quantity',
+          child: TextFormField(
+            textAlign: TextAlign.center,
+            keyboardType: TextInputType.number,
+            inputFormatters: <TextInputFormatter>[
+              FilteringTextInputFormatter.digitsOnly,
+            ],
+            style: Theme.of(context).textTheme.headline5,
+            decoration: const InputDecoration(
+           hintText: 'Number of Wasted Items',
+            ),
+            validator: (value) {
+              if (value!.isEmpty) {
+                return "Please enter the number of wasted items";
+              } else {
+                return null;
+              }
+            },
+            onSaved: (value) {
+               post.quantity = int.parse(value!);
+               post.longitude = locationData!.longitude as double;
+               post.latitude = locationData!.latitude as double;
+               post.imageURL = fireURL;
+            },
           ),
-          validator: (value) {
-            if (value!.isEmpty) {
-              return "Please enter the number of wasted items";
-            } else {
-              return null;
-            }
-          },
-          onSaved: (value) {
-             post.quantity = int.parse(value!);
-             post.longitude = locationData!.longitude as double;
-             post.latitude = locationData!.latitude as double;
-             post.imageURL = fireURL;
-          },
         ),
       ),
     );
