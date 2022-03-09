@@ -103,8 +103,8 @@ class _NewWastePostState extends State<NewWastePost> {
       label:'Upload post to cloud',
       child: GestureDetector(
         child: Container(
-            height: 100,
             color: Colors.blue,
+            height: 100,
             child: const Icon(Icons.cloud_upload_outlined, color: Colors.white, size: 50)),
         onTap: () async {
           post.date = format.format(DateTime.now());
